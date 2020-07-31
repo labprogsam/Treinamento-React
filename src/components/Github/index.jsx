@@ -1,18 +1,31 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import List from '../List';
+import AppContext from '../../State/App.context';
 import './Github.css';
 
 const Github = () => {
+  const [snack, setSnack] = useContext(AppContext).snackState;
   const [contador, setContador] = useState(0);
   const [user, setUser] = useState(null);
   const [repo, setRepo] = useState('');
   const [followers, setFollowers] = useState(null);
   const [value, setValue] = useState('');
 
+  useEffect(() => {
+    if (snack.type && snack.message) {
+      alert(`Tipo: ${snack.type} Message: ${snack.message}`)
+    }
+  }, [snack]);
+
   const loadUser = async () => {
     const res = await axios.get(`https://api.github.com/users/${value}`);
+
+    if (res.status === 200) {
+      setSnack({ type: 'success', message: 'Usuário requisitado com sucesso.'})
+    }
+
     setUser(res.data);
     const repos = await axios.get(res.data.repos_url);
     setRepo(repos.data);
