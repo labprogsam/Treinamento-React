@@ -9,6 +9,21 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push',
            'us-central1-docker.pkg.dev/neurolake-marketing-gcp-homol/images/teste']
+
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+    - 'run'
+    - 'deploy'
+    - 'teste'
+    - '--image'
+    - 'us-central1-docker.pkg.dev/neurolake-marketing-gcp-homol/images/teste'
+    - '--region'
+    - 'us-central1'
+    - '--platform'
+    - 'managed'
+images:
+- 'us-central1-docker.pkg.dev/neurolake-marketing-gcp-homol/images/teste'
 serviceAccount: 'projects/neurolake-marketing-gcp-homol/serviceAccounts/teste-deploy@neurolake-marketing-gcp-homol.iam.gserviceaccount.com'
 options:
   logging: CLOUD_LOGGING_ONLY
