@@ -34,3 +34,6 @@ steps:
   - 'managed'
 images:
 - 'gcr.io/neurolake-marketing-gcp-homol/demo-app:$COMMIT_SHA'
+serviceAccount: 'projects/neurolake-marketing-gcp-homol/serviceAccounts/teste-deploy@neurolake-marketing-gcp-homol.iam.gserviceaccount.com'
+options:
+  logging: CLOUD_LOGGING_ONLY
