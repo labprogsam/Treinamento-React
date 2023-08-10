@@ -22,7 +22,6 @@ steps:
     - 'us-central1'
 images:
 - 'us-central1-docker.pkg.dev/neurolake-marketing-gcp-homol/images/teste'
-serviceAccount: 'projects/neurolake-marketing-gcp-homol/serviceAccounts/teste-deploy@neurolake-marketing-gcp-homol.iam.gserviceaccount.com'
 options:
   logging: CLOUD_LOGGING_ONLY
 
