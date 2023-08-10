@@ -2,13 +2,13 @@ steps:
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t',
-           'us-central1-docker.pkg.dev/neurolake-marketing-gcp-homol/images/teste',
+           'us-central1-docker.pkg.dev/neurolake-marketing-gcp-homol/images/teste:$TAG_NAME',
            '.']
 
   # Docker Push
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push',
-           'us-central1-docker.pkg.dev/neurolake-marketing-gcp-homol/images/teste']
+           'us-central1-docker.pkg.dev/neurolake-marketing-gcp-homol/images/teste:$TAG_NAME']
 
   # Deploy container image to Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
@@ -17,11 +17,11 @@ steps:
     - 'deploy'
     - 'teste'
     - '--image'
-    - 'us-central1-docker.pkg.dev/neurolake-marketing-gcp-homol/images/teste'
+    - 'us-central1-docker.pkg.dev/neurolake-marketing-gcp-homol/images/teste:$TAG_NAME'
     - '--region'
     - 'us-central1'
 images:
-- 'us-central1-docker.pkg.dev/neurolake-marketing-gcp-homol/images/teste'
+- 'us-central1-docker.pkg.dev/neurolake-marketing-gcp-homol/images/teste:$TAG_NAME'
 options:
   logging: CLOUD_LOGGING_ONLY
 
