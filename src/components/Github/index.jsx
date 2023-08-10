@@ -46,7 +46,7 @@ const Github = () => {
   return (
     <section className="content">
       <form className="form-content" onSubmit={(e) => handleSubmit(e)}>
-        <img className="header-icon" src="https://i.ya-webdesign.com/images/github-logo-png.png" alt="github icon" />
+        <img className="header-icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5-IegBwRWKFvBRzdCAh4NKbWWVIQV8KODYg&usqp=CAU" alt="github icon" />
         <input placeholder="Pesquisar..." value={value} onChange={(e) => handleChange(e)} />
         <button type="submit">PESQUISAR</button>
       </form>
